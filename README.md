@@ -16,4 +16,5 @@ If you are running a public cloud installation managed by Nordic Peak then consu
 Teis example ("Get-ErrandXML-Teis.ps1") requires the PowerShell Adapter and Teis integration platform version 3.2 or higher
 
 Tested with PowerShell 5.x
+
 Compatible with PowerShell version 3.0+
