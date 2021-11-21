@@ -1,9 +1,9 @@
 Import-Module -Name "$PSScriptRoot\..\modules\OpenE.psm1"
 
-$Errands = Get-ErrandXML -FlowInstanceId "1234"
+$Errand = Get-ErrandXML -FlowInstanceId "3618"
 
-foreach ($Errand in $Errands) {
-    $Errand.InnerXML
+$Errand.InnerXML
 
-    $Errand.FlowInstance.Values
-}
+$Errand.FlowInstance.Values
+
+$Errand.FlowInstance.Header.FlowInstanceId
