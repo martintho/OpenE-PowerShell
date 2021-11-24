@@ -28,7 +28,7 @@ function Get-Categories {
     $Uri = "$($Hostname)$($ApiBase)"
     $Uri = [System.UriBuilder]$Uri
     $Uri = $Uri.Uri.OriginalString
-    
+
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml"
 }
 
@@ -121,10 +121,10 @@ function Get-ErrandsByVersion {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -154,10 +154,10 @@ function Get-ErrandsByFamilyID {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -166,6 +166,8 @@ function Get-ErrandsByFamilyID {
     $Headers = @{
 		Authorization = New-BasicAuthenticationHeader
 	}
+
+    Write-Host "$Uri"
 
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
@@ -191,10 +193,10 @@ function Get-ErrandsByFamilyIDAndStatus {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -228,10 +230,10 @@ function Get-ErrandsByVersionIDAndStatus {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -268,10 +270,10 @@ function Get-ErrandsByAttribute {
     $QueryParamters.Add('value',$Value)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -301,10 +303,10 @@ function Get-ErrandXML {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -313,7 +315,7 @@ function Get-ErrandXML {
     $Headers = @{
 		Authorization = New-BasicAuthenticationHeader
 	}
-
+    Write-Host "$Uri"
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
@@ -336,10 +338,10 @@ function Get-ErrandPDF {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -369,10 +371,10 @@ function Get-Status {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -406,10 +408,10 @@ function Get-Events {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
     if ($FromEventID) {
         $QueryParamters.Add('fromEventID',$FromEventID)
@@ -449,10 +451,10 @@ function Get-EventsByVersionID {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
     if ($FromEventID) {
         $QueryParamters.Add('fromEventID',$FromEventID)
@@ -492,10 +494,10 @@ function Get-EventsByFamilyID {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
     if ($FromEventID) {
         $QueryParamters.Add('fromEventID',$FromEventID)
@@ -531,10 +533,10 @@ function Get-MessagesByVersionID {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -564,10 +566,10 @@ function Get-MessagesByFamilyID {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -597,10 +599,10 @@ function Get-Message {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -632,10 +634,10 @@ function Get-Attachment {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
 
     $Uri.Query = $QueryParamters.ToString()
@@ -661,8 +663,8 @@ function Get-StatisticsByDate {
     $Uri = [System.UriBuilder]$Uri
 
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
-    $QueryParamters.Add('fromdate',$FromDate)
-    $QueryParamters.Add('todate',$ToDate)
+    $QueryParamters.Add('fromDate',$FromDate)
+    $QueryParamters.Add('toDate',$ToDate)
 
     $Uri.Query = $QueryParamters.ToString()
     $Uri = $Uri.Uri.OriginalString
@@ -708,10 +710,10 @@ function Get-CulledErrand {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
     if ($FromCullingID) {
         $QueryParamters.Add('fromCullingID',$FromCullingID)
@@ -751,10 +753,10 @@ function Get-CulledErrandByVersionID {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
     if ($FromCullingID) {
         $QueryParamters.Add('fromCullingID',$FromCullingID)
@@ -794,10 +796,10 @@ function Get-CulledErrandByFamilyID {
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
 
     if ($FromDate) {
-        $QueryParamters.Add('fromdate',$FromDate)
+        $QueryParamters.Add('fromDate',$FromDate)
     }
     if ($ToDate) {
-        $QueryParamters.Add('todate',$ToDate)
+        $QueryParamters.Add('toDate',$ToDate)
     }
     if ($FromCullingID) {
         $QueryParamters.Add('fromCullingID',$FromCullingID)
@@ -914,7 +916,7 @@ function Get-Reservations {
 	}
 
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
-    
+
 }
 
 function Remove-Reservation {
