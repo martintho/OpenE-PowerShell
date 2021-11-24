@@ -14,6 +14,7 @@ function New-BasicAuthenticationHeader {
     return "Basic $($base64)"
 }
 
+# Get all eservices
 function Get-Eservices {
     $ApiBase = "/api/v1/getflows/xml"
     $Uri = "$($Hostname)$($ApiBase)"
@@ -23,6 +24,7 @@ function Get-Eservices {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml"
 }
 
+# Get all categories
 function Get-Categories {
     $ApiBase = "/api/v1/getcategories/xml"
     $Uri = "$($Hostname)$($ApiBase)"
@@ -32,6 +34,7 @@ function Get-Categories {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml"
 }
 
+# Get eservices filtered by category ID
 function Get-EservicesByCategory {
     param (
         [Parameter(Mandatory=$true)]
@@ -46,6 +49,7 @@ function Get-EservicesByCategory {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml"
 }
 
+# Get a specific eservice by version ID
 function Get-Eservice {
     param (
         [Parameter(Mandatory=$true)]
@@ -60,6 +64,7 @@ function Get-Eservice {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml"
 }
 
+# Get eservices filtered by family ID
 function Get-EserviceByFamilyID {
     param (
         [Parameter(Mandatory=$true)]
@@ -74,6 +79,7 @@ function Get-EserviceByFamilyID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml"
 }
 
+# Get the most popular eservices
 function Get-PopularEservices {
     param (
         [Parameter(Mandatory=$true)]
@@ -88,6 +94,7 @@ function Get-PopularEservices {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml"
 }
 
+# Get eservice defined by a search filter
 function Search-EservicesByQuery {
     param (
         [Parameter(Mandatory=$true)]
@@ -105,6 +112,8 @@ function Search-EservicesByQuery {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml"
 }
 
+# Get errands by eservice version ID
+# Optional: Filter by fromDate & toDate
 function Get-ErrandsByVersion {
     param (
         [Parameter(Mandatory=$true)]
@@ -137,6 +146,8 @@ function Get-ErrandsByVersion {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get errands by eservice family ID
+# Optional: Filter by fromDate & toDate
 function Get-ErrandsByFamilyID {
     param (
         [Parameter(Mandatory=$true)]
@@ -172,6 +183,8 @@ function Get-ErrandsByFamilyID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get errands by eservice family ID and status
+# Optional: Filter by fromDate & toDate
 function Get-ErrandsByFamilyIDAndStatus {
     param (
         [Parameter(Mandatory=$true)]
@@ -209,6 +222,8 @@ function Get-ErrandsByFamilyIDAndStatus {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get errands by eservice version ID and status
+# Optional: Filter by fromDate & toDate
 function Get-ErrandsByVersionIDAndStatus {
     param (
         [Parameter(Mandatory=$true)]
@@ -246,6 +261,8 @@ function Get-ErrandsByVersionIDAndStatus {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get errands by attribute
+# Optional: Filter by fromDate & toDate
 function Get-ErrandsByAttribute {
     param (
         [Parameter(Mandatory=$true)]
@@ -286,6 +303,8 @@ function Get-ErrandsByAttribute {
     return Invoke-RestMethod -Uri "" -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get a specific errand filtered by errand (Flow Instance) ID
+# Optional: Filter by fromDate & toDate
 function Get-ErrandXML {
     param (
         [Parameter(Mandatory=$true)]
@@ -319,6 +338,8 @@ function Get-ErrandXML {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get errand as PDF filtered by errand (Flow Instance) ID
+# Optional: Filter by fromDate & toDate
 function Get-ErrandPDF {
     param (
         [Parameter(Mandatory=$true)]
@@ -354,6 +375,8 @@ function Get-ErrandPDF {
     return Invoke-RestMethod -Uri $Uri -Method Get -OutFile $filename -Headers $Headers
 }
 
+# Get status of an errand
+# Optional: Filter by fromDate & toDate
 function Get-Status {
     param (
         [Parameter(Mandatory=$true)]
@@ -387,6 +410,9 @@ function Get-Status {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get events
+# Optional: Filter by fromDate & toDate
+# Optional: Filter by fromEventID & toEventID
 function Get-Events {
     param (
         [Parameter(Mandatory=$true)]
@@ -430,6 +456,9 @@ function Get-Events {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get events by version ID
+# Optional: Filter by fromDate & toDate
+# Optional: Filter by fromEventID & toEventID
 function Get-EventsByVersionID {
     param (
         [Parameter(Mandatory=$true)]
@@ -473,6 +502,9 @@ function Get-EventsByVersionID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get events by family ID
+# Optional: Filter by fromDate & toDate
+# Optional: Filter by fromEventID & toEventID
 function Get-EventsByFamilyID {
     param (
         [Parameter(Mandatory=$true)]
@@ -516,6 +548,8 @@ function Get-EventsByFamilyID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get messages by eservice version ID
+# Optional: Filter by fromDate & toDate
 function Get-MessagesByVersionID {
     param (
         [Parameter(Mandatory=$true)]
@@ -549,6 +583,8 @@ function Get-MessagesByVersionID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get messages by eservice family ID
+# Optional: Filter by fromDate & toDate
 function Get-MessagesByFamilyID {
     param (
         [Parameter(Mandatory=$true)]
@@ -582,6 +618,8 @@ function Get-MessagesByFamilyID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get message filtered by message ID
+# Optional: Filter by fromDate & toDate
 function Get-Message {
     param (
         [Parameter(Mandatory=$true)]
@@ -615,6 +653,8 @@ function Get-Message {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get attachment filtered by attachment ID
+# Optional: Filter by fromDate & toDate
 function Get-Attachment {
     param (
         [Parameter(Mandatory=$true)]
@@ -650,11 +690,13 @@ function Get-Attachment {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -OutFile $filename -Headers $Headers
 }
 
+# Get eservice statistics filtered by fromDate
+# Optional: Filter by fromDate & toDate
 function Get-StatisticsByDate {
     param (
         [Parameter(Mandatory=$true)]
         [string]$FromDate,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory=$false)]
         [string]$ToDate
     )
 
@@ -664,7 +706,9 @@ function Get-StatisticsByDate {
 
     $QueryParamters = [System.Web.HttpUtility]::ParseQueryString([String]::Empty)
     $QueryParamters.Add('fromDate',$FromDate)
-    $QueryParamters.Add('toDate',$ToDate)
+    if ($ToDate) {
+        $QueryParamters.Add('toDate',$ToDate)
+    } 
 
     $Uri.Query = $QueryParamters.ToString()
     $Uri = $Uri.Uri.OriginalString
@@ -676,6 +720,7 @@ function Get-StatisticsByDate {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get eservice statistics
 function Get-Statistics {
     $ApiBase = "/api/flowinstancestatistics/getflows/xml"
     $Uri = "$($Hostname)$($ApiBase)"
@@ -689,6 +734,9 @@ function Get-Statistics {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get culled errands filtered by errand (Flow Instance) ID
+# Optional: Filter by fromDate & toDate
+# Optional: Filter by fromCullingID & toCullingID
 function Get-CulledErrand {
     param (
         [Parameter(Mandatory=$false)]
@@ -732,6 +780,9 @@ function Get-CulledErrand {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get culled errands filtered by eservice version ID
+# Optional: Filter by fromDate & toDate
+# Optional: Filter by fromCullingID & toCullingID
 function Get-CulledErrandByVersionID {
     param (
         [Parameter(Mandatory=$true)]
@@ -775,6 +826,9 @@ function Get-CulledErrandByVersionID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get culled errands filtered by eservice family ID
+# Optional: Filter by fromDate & toDate
+# Optional: Filter by fromCullingID & toCullingID
 function Get-CulledErrandByFamilyID {
     param (
         [Parameter(Mandatory=$true)]
@@ -818,6 +872,7 @@ function Get-CulledErrandByFamilyID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get queues
 function Get-Queues {
     $ApiBase = "/api/queueapi/getqueues"
     $Uri = "$($Hostname)$($ApiBase)"
@@ -831,6 +886,7 @@ function Get-Queues {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get active queue by queue ID
 function Get-ActiveQueuesByID {
     param (
         [Parameter(Mandatory=$true)]
@@ -849,6 +905,7 @@ function Get-ActiveQueuesByID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get archived queue by queue ID
 function Get-ArchivedQueuesByID {
     param (
         [Parameter(Mandatory=$true)]
@@ -867,6 +924,7 @@ function Get-ArchivedQueuesByID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get queue by queue ID
 function Get-QueueByID {
     param (
         [Parameter(Mandatory=$true)]
@@ -885,6 +943,7 @@ function Get-QueueByID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get queue by person ID and queue ID
 function Get-QueueByPersonIDAndQueueID {
     param (
         [Parameter(Mandatory=$true)]
@@ -905,6 +964,7 @@ function Get-QueueByPersonIDAndQueueID {
     return Invoke-RestMethod -Uri $Uri -Method Get -ContentType "application/xml" -Headers $Headers
 }
 
+# Get reservations
 function Get-Reservations {
     $ApiBase = "/api/reservations/getreservations"
     $Uri = "$($Hostname)$($ApiBase)"
@@ -919,6 +979,7 @@ function Get-Reservations {
 
 }
 
+# Remove reservations
 function Remove-Reservation {
     param (
         [Parameter(Mandatory=$true)]
