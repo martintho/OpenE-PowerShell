@@ -20,3 +20,5 @@ Teis example ("Get-ErrandXML-Teis.ps1") requires the PowerShell Adapter and Teis
 Tested with PowerShell 5.x
 
 Compatible with PowerShell version 3.0+
+
+Report bugs by contacting me or posting in discussion found on this repo.
